@@ -1,0 +1,76 @@
+﻿<Window x:Class="LDVELH.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LDVELH"
+        mc:Ignorable="d"
+        Title="Le livre dont vous êtes le Héros" Height="800" Width="1000" Background="White" MinWidth="1000" MinHeight="800">
+    <Grid x:Name="Le_livre_dont_vous_êtes_le_héros" MinWidth="800" MinHeight="600" HorizontalAlignment="Left" Margin="0,0,-8,-3.48" Width="1000">
+        <Grid.Background>
+            <ImageBrush ImageSource="p3.jpg"/>
+        </Grid.Background>
+        <RichTextBox x:Name="textDisplayer" HorizontalAlignment="Left" Height="577" Margin="86,71,0,0" VerticalAlignment="Top" Width="590" Opacity="0.7" FontFamily="Times New Roman" FontSize="16">
+            <FlowDocument AllowDrop="False" Focusable="False"/>
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="3"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+        <Label Content="Chapitre suivant" HorizontalAlignment="Left" Margin="87,660,0,0" VerticalAlignment="Top" Width="143.993" FontFamily="Times New Roman" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="nextChapter" HorizontalAlignment="Left" Height="23" Margin="220,665.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" />
+        <Button x:Name="go" Content="GO" HorizontalAlignment="Left" Margin="290,665.4,0,0" VerticalAlignment="Top" Width="75" FontFamily="Times New Roman" FontSize="16" Click="ChapterChangedEventHandler">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5F5454" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="Personnage" Content="Personnage" HorizontalAlignment="Left" Margin="744.19,71,0,0" VerticalAlignment="Top" Width="145.993" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Habilité :" HorizontalAlignment="Left" Margin="691.333,142,0,0" VerticalAlignment="Top" Width="77.993"/>
+        <Label Content="Endurance :" HorizontalAlignment="Left" Margin="691.333,172.96,0,0" VerticalAlignment="Top" Width="77.993"/>
+        <Label Content="Chance :" HorizontalAlignment="Left" Margin="691.333,201.252,0,0" VerticalAlignment="Top" Width="77.993"/>
+        <Label Content="Pièces d'or :" HorizontalAlignment="Left" Margin="691.333,232.212,0,0" VerticalAlignment="Top" Width="77.993"/>
+        <TextBox x:Name="entitlement" HorizontalAlignment="Left" Height="23" Margin="769.326,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
+        <TextBox x:Name="stamina" HorizontalAlignment="Left" Height="23" Margin="769.326,172.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
+        <TextBox x:Name="luck" HorizontalAlignment="Left" Height="23" Margin="769.326,204.212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
+        <TextBox x:Name="gold" HorizontalAlignment="Left" Height="23" Margin="768.99,235.172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
+        <Image Height="72" HorizontalAlignment="Left" Margin="727.993,588.4,0,0" x:Name="dice1" Stretch="Fill" VerticalAlignment="Top" Width="74" />
+        <Image Height="72" HorizontalAlignment="Left" Margin="835.85,588.4,0,0" x:Name="dice2" Stretch="Fill" VerticalAlignment="Top" Width="74" />
+        <Button x:Name="RollDiceOneButton" Content="Dé 1" HorizontalAlignment="Left" Margin="727.993,664,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="RollDiceOneAction">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5F5454" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="RollDiceTwoButton" Content="Dé 2" HorizontalAlignment="Left" Margin="835.85,664.233,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="RollDiceTwoAction">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5F5454" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SaveButton" Content="Sauver" HorizontalAlignment="Left" Margin="895.183,84.303,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="SaveAction">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5F5454" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+      
+    </Grid>
+</Window>

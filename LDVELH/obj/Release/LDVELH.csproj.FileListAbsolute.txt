@@ -1,0 +1,16 @@
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\bin\Release\LDVELH.exe.config
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\bin\Release\LDVELH.exe
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\bin\Release\LDVELH.pdb
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\MainWindow.g.cs
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\App.g.cs
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH_MarkupCompile.cache
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH_MarkupCompile.lref
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\MainWindow.baml
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.g.resources
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.Properties.Resources.resources
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.csproj.GenerateResource.Cache
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.csproj.CoreCompileInputs.cache
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.exe
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.pdb
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\bin\Release\smdf.xml
+C:\Users\Nicolas\source\repos\LDVELH\LDVELH\obj\Release\LDVELH.csprojResolveAssemblyReference.cache
