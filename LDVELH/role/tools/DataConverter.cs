@@ -23,5 +23,9 @@ namespace LDVELH.role.tools {
             }
             return index;
         }
+
+        internal static bool ToBoolean(string value) {
+            return value == "true";
+        }
     }
 }

@@ -20,7 +20,7 @@
         </RichTextBox>
         <Label Content="Chapitre suivant" HorizontalAlignment="Left" Margin="87,660,0,0" VerticalAlignment="Top" Width="143.993" FontFamily="Times New Roman" FontWeight="Bold" FontSize="16"/>
         <TextBox x:Name="nextChapter" HorizontalAlignment="Left" Height="23" Margin="220,665.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" />
-        <Button x:Name="go" Content="GO" HorizontalAlignment="Left" Margin="290,665.4,0,0" VerticalAlignment="Top" Width="75" FontFamily="Times New Roman" FontSize="16" Click="ChapterChangedEventHandler">
+        <Button x:Name="GoButton" Content="GO" HorizontalAlignment="Left" Margin="290,665.4,0,0" VerticalAlignment="Top" Width="75" FontFamily="Times New Roman" FontSize="16" Click="ChapterChangedAction">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -39,9 +39,9 @@
         <TextBox x:Name="stamina" HorizontalAlignment="Left" Height="23" Margin="769.326,172.96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
         <TextBox x:Name="luck" HorizontalAlignment="Left" Height="23" Margin="769.326,204.212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
         <TextBox x:Name="gold" HorizontalAlignment="Left" Height="23" Margin="768.99,235.172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
-        <Image Height="72" HorizontalAlignment="Left" Margin="727.993,588.4,0,0" x:Name="dice1" Stretch="Fill" VerticalAlignment="Top" Width="74" />
-        <Image Height="72" HorizontalAlignment="Left" Margin="835.85,588.4,0,0" x:Name="dice2" Stretch="Fill" VerticalAlignment="Top" Width="74" />
-        <Button x:Name="RollDiceOneButton" Content="Dé 1" HorizontalAlignment="Left" Margin="727.993,664,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="RollDiceOneAction">
+        <Image Height="72" HorizontalAlignment="Left" Margin="727.993,588.4,0,0" x:Name="dice1Image" Stretch="Fill" VerticalAlignment="Top" Width="74" />
+        <Image Height="72" HorizontalAlignment="Left" Margin="835.85,588.4,0,0" x:Name="dice2Image" Stretch="Fill" VerticalAlignment="Top" Width="74" />
+        <Button x:Name="Dice1Button" Content="Dé 1" HorizontalAlignment="Left" Margin="727.993,664,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="RollDiceOneAction">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -51,7 +51,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="RollDiceTwoButton" Content="Dé 2" HorizontalAlignment="Left" Margin="835.85,664.233,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="RollDiceTwoAction">
+        <Button x:Name="Dice2Button" Content="Dé 2" HorizontalAlignment="Left" Margin="835.85,664.233,0,0" VerticalAlignment="Top" Width="74" FontFamily="Times New Roman" FontSize="16" Click="RollDiceTwoAction">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -71,6 +71,16 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-      
+        <Button x:Name="FightButton" Content="Combatttre" HorizontalAlignment="Left" Margin="403,665.4,0,0" VerticalAlignment="Top" Width="144" FontFamily="Times New Roman" FontSize="16" Click="FightAction" Visibility="Hidden">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF5F5454" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </Window>

@@ -56,6 +56,7 @@
     </ApplicationDefinition>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="role\entity\Chapter.cs" />
+    <Compile Include="role\entity\Enemy.cs" />
     <Compile Include="role\tools\Constantes.cs" />
     <Compile Include="role\tools\DataConverter.cs" />
     <Compile Include="role\tools\Dice.cs" />
@@ -117,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="p3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Dicefaces\0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace LDVELH.role.tools {
 
         // Constructor
         public Dice() {
-            _value = 1;
+            _value = 0;
         }
 
         // Value property

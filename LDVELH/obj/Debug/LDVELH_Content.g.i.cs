@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("p3.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dicefaces/0.png")]
 
 
