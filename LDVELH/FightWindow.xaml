@@ -1,0 +1,31 @@
+﻿<Window x:Class="LDVELH.FightWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LDVELH"
+        mc:Ignorable="d"
+        Title="Combat" Height="600" Width="800">
+    <Grid Opacity="100" Margin="4.859,0,5.413,-0.904" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="781.728" Height="523.971">
+
+        <RichTextBox x:Name="textDisplayer" HorizontalAlignment="Left" Height="298.328" Margin="188.126,142.288,0,0" VerticalAlignment="Top" Width="495.5" Opacity="0.7" FontFamily="Times New Roman" FontSize="16">
+            <FlowDocument AllowDrop="False" Focusable="False"/>
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="3"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+        <Label Content="Habilité :" HorizontalAlignment="Left" Margin="13.495,204.212,0,0" VerticalAlignment="Top" Width="77.993"/>
+        <Label Content="Endurance :" HorizontalAlignment="Left" Margin="13.495,243.5,0,0" VerticalAlignment="Top" Width="77.993"/>
+        <Label Content="Chance :" HorizontalAlignment="Left" Margin="13.495,286.712,0,0" VerticalAlignment="Top" Width="77.993"/>
+
+        <TextBox x:Name="entitlement" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False" Margin="114.126,207.172,0,0" RenderTransformOrigin="0.408,2.428"/>
+        <TextBox x:Name="stamina" HorizontalAlignment="Left" Height="23" Margin="114.126,246.46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False"/>
+        <TextBox x:Name="luck" HorizontalAlignment="Left" Height="23" Margin="114.126,289.672,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" IsEnabled="False" RenderTransformOrigin="-12.238,4.189"/>
+
+        <Image Height="72" HorizontalAlignment="Left"  x:Name="dice1Image" Stretch="Fill" VerticalAlignment="Top" Width="74" Margin="13.495,386.529,0,0" MouseDown="RollDiceOneAction"/>
+        <Image Height="72" HorizontalAlignment="Left"  x:Name="dice2Image" Stretch="Fill" VerticalAlignment="Top" Width="74" Margin="114.126,386.529,0,0" MouseDown="RollDiceTwoAction" />
+
+    </Grid>
+</Window>

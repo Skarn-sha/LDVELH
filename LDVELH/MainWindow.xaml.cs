@@ -25,16 +25,19 @@ namespace LDVELH {
         Dice dice1 = new Dice();
         Dice dice2 = new Dice();
 
+        public Hero Hero { get => hero; set => hero = value; }
+        internal Chapter Chapter { get => chapter; set => chapter = value; }
+
         public MainWindow() {
             InitializeComponent();
             if (Hero.Exist()) {
-                hero = Hero.Load();
+                Hero = Hero.Load();
                 DisplayHerosCaracteritics();
-                DisplayChapter(hero.LastChapter);
+                DisplayChapter(Hero.LastChapter);
                 phase = Constantes.EXPLORATION_PHASE;
             } else {
                 DisplayHerosCreation();
-                hero = new Hero();
+                Hero = new Hero();
             }
         }
 
@@ -47,19 +50,19 @@ namespace LDVELH {
         }
 
         /***** Display ******/
-        private void DisplayHerosCaracteritics() {
-            nextChapter.Text = hero.LastChapter.ToString();
-            entitlement.Text = hero.Entitlement.ToString();
-            stamina.Text = hero.Stamina.ToString();
-            luck.Text = hero.Luck.ToString();
-            gold.Text = hero.Gold.ToString();
+        public void DisplayHerosCaracteritics() {
+            nextChapter.Text = Hero.LastChapter.ToString();
+            entitlement.Text = Hero.Entitlement.ToString();
+            stamina.Text = Hero.Stamina.ToString();
+            luck.Text = Hero.Luck.ToString();
+            gold.Text = Hero.Gold.ToString();
         }
 
         private void DisplayChapter(int index) {
             try {
-                chapter = Chapter.Load(index);
-                hero.Update(chapter);
-                textDisplayer.AppendText(chapter.Text);
+                Chapter = Chapter.Load(index);
+                Hero.Update(Chapter);
+                textDisplayer.AppendText(Chapter.Text);
                 LastStableChapterIndex = index;
                 DisplayHerosCaracteritics();
                 ManageFightButtonVisibilty();
@@ -78,7 +81,7 @@ namespace LDVELH {
                     break;
                 case Constantes.ENTITLEMENT_PHASE:
                     int Entitlement = ((dice1.Value > 0) ? dice1.Value : dice2.Value) + 6;
-                    hero.Entitlement = Entitlement;
+                    Hero.Entitlement = Entitlement;
                     textDisplayer.AppendText("Votre habilité sera de  " + Entitlement);
                     textDisplayer.AppendText("\n");
                     textDisplayer.AppendText("Veuillez lancer les dés pour determiner votre endurance.");
@@ -87,7 +90,7 @@ namespace LDVELH {
                     break;
                 case Constantes.STAMINA_PHASE:
                     int Stamina = dice1.Value + dice2.Value + 12;
-                    hero.Stamina = Stamina;
+                    Hero.Stamina = Stamina;
                     textDisplayer.AppendText("Votre endurance sera de  " + Stamina);
                     textDisplayer.AppendText("\n");
                     textDisplayer.AppendText("Veuillez lancer les dés pour determiner votre chance.");
@@ -96,7 +99,7 @@ namespace LDVELH {
                     break;
                 case Constantes.LUCK_PHASE:
                     int Luck = ((dice1.Value > 0) ? dice1.Value : dice2.Value) + 6;
-                    hero.Luck = Luck;
+                    Hero.Luck = Luck;
                     textDisplayer.AppendText("Votre chance sera de  " + Luck);
                     textDisplayer.AppendText("\n");
                     textDisplayer.AppendText("Cliquez sur Go pour commencer l'aventure");
@@ -148,8 +151,8 @@ namespace LDVELH {
         
         private void SaveAction(object sender, RoutedEventArgs e) {
             if (phase == Constantes.EXPLORATION_PHASE) {
-                hero.LastChapter = DataConverter.ToInt(nextChapter.Text);
-                hero.Save();
+                Hero.LastChapter = DataConverter.ToInt(nextChapter.Text);
+                Hero.Save();
                 System.Windows.MessageBox.Show("Progression Sauvegardée");
             }
         }
@@ -159,9 +162,7 @@ namespace LDVELH {
             dice1Image.Source = new BitmapImage(new Uri(@"DiceFaces\" + dice1.Value.ToString() + ".png", UriKind.Relative));
             if (IsHeroCreationPhase()) {
                 GotoNextPhase();
-            } else if (IsFightPhase()) {
-                RoundFight();
-            }
+            } 
         }
 
         private void RollDiceTwoAction(object sender, RoutedEventArgs e) {
@@ -169,61 +170,25 @@ namespace LDVELH {
             dice2Image.Source = new BitmapImage(new Uri(@"DiceFaces\" + dice2.Value.ToString() + ".png", UriKind.Relative));
             if (IsHeroCreationPhase()) {
                 GotoNextPhase();
-            } else if (IsFightPhase()) {
-                RoundFight();
-            }
+            } 
         }
 
         private void FightAction(object sender, RoutedEventArgs e) {
-            GoButton.Visibility = chapter.EscapableFightPossibility ? Visibility.Visible : Visibility.Hidden;
-            ClearTextDisplayer();
-            phase = Constantes.FIGHT_PHASE;
+            GoButton.Visibility = Chapter.EscapableFightPossibility ? Visibility.Visible : Visibility.Hidden;
+            
+            var window = new FightWindow { Owner = this };
+            window.ShowDialog();
 
-            AfficherLigne("Phase de combat :\nVeuillez-lancer les deux dés");
         }
 
-        private void RoundFight() {
-            if (dice1.Value > 0 && dice2.Value > 0) {
-
-                Enemy enemy = chapter.NextOpponent();
-                if (enemy == null) {
-                    AfficherLigne("Vous remportez le combat. Rendez-vous à la destination prévue");
-                } else {
-
-                    int power = dice1.Value + dice2.Value + enemy.Entitlement;
-                    ResetDices();
-
-                    AfficherLigne("Votre ennemi est un " + enemy.Name);
-                    dice1.Roll();
-                    AfficherLigne("Son habilité est " + enemy.Entitlement + " et son endurance est de " + enemy.Stamina);
-                    dice2.Roll();
-                    enemy.Power = dice1.Value + dice2.Value + enemy.Entitlement;
-                    AfficherLigne("L'ennemi lance lance les dés et obtient  " + enemy.Power + " en Force");
-                    
-                    AfficherLigne("Vous obtenez   " + power + " en Force");
-                    if (enemy.Power > power) {
-                        AfficherLigne("L'ennemi gagne le round et vous inflige 2 points de dégats");
-                        hero.Stamina -= 2;
-                        DisplayHerosCaracteritics();
-                    } else if (enemy.Power == power) {
-                        AfficherLigne("Macht nul. Recommencez");
-                    } else {
-                        AfficherLigne("Vous gagnez le round et vous infligez 2 points de dégats  à l'ennemi");
-                        enemy.Stamina -= 2;
-                    }
-                     ClearTextDisplayer();
-                }
-                ResetDices();
-            }
-        }
-
+       
         private void AfficherLigne(string line) {
             textDisplayer.AppendText(line);
             textDisplayer.AppendText("\n");
         }
 
         private void ManageFightButtonVisibilty() {
-            FightButton.Visibility = chapter.HasEnnemies() ? Visibility.Visible : Visibility.Hidden;
+            FightButton.Visibility = Chapter.HasEnnemies() ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void ResetDices() {

@@ -60,6 +60,9 @@
     <Compile Include="role\tools\Constantes.cs" />
     <Compile Include="role\tools\DataConverter.cs" />
     <Compile Include="role\tools\Dice.cs" />
+    <Compile Include="FightWindow.xaml.cs">
+      <DependentUpon>FightWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +76,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="FightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
